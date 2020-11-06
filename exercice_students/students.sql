@@ -1,8 +1,8 @@
-CREATE TABLE students
+CREATE TABLE IF NOT EXISTS students
 (
     id INT PRIMARY KEY NOT NULL,
     name  VARCHAR(30),
-    city VARCHAR (30),
+    city VARCHAR (30)
 );
 
 INSERT INTO students (id, name, city)
@@ -14,10 +14,10 @@ INSERT INTO students (id, name, city)
  (5,'Romain','Paris'),
  (6,'Sophie','Paris');
 
- CREATE TABLE languages
+ CREATE TABLE IF NOT EXISTS languages
 (
     id INT PRIMARY KEY NOT NULL,
-    name  VARCHAR(30),
+    name  VARCHAR(30)
 
 );
 
@@ -29,12 +29,12 @@ INSERT INTO students (id, name, city)
  (4,'Spanish'),
  (5,'Mandarin');
 
- CREATE TABLE favorites
+ CREATE TABLE IF NOT EXISTS favorites
 (
     id INT PRIMARY KEY NOT NULL,
     class  VARCHAR(30),
     sport VARCHAR (30),
-    student_id SMALLINT (6),
+    student_id SMALLINT (6)
 );
 
  INSERT INTO favorites (id,Class,Sport,Student_ID)
@@ -46,11 +46,11 @@ INSERT INTO students (id, name, city)
  (5,'Computer science','Tennis',5),
  (6,'Arts','Baseball',4);
 
-CREATE TABLE students_languages
+CREATE TABLE IF NOT EXISTS students_languages
 (
     id INT PRIMARY KEY NOT NULL,
     student_id  INT (6),
-    language_id INT (6),
+    language_id INT (6)
 );
 
 INSERT INTO students_languages (id,student_id,language_id)
@@ -81,18 +81,20 @@ Rapport lvl 1
 
 Rapport lvl2
 
-1) SELECT * FROM favorites WHERE id = 5
-2) SELECT student_id,sport FROM students WHERE id = 4
-3) SELECT name,class FROM favorites,students WHERE id = 1
-4) SELECT * FROM students WHERE class = 'Music'
-5) SELECT name FROM students WHERE sport = 'Tennis'
-6) SELECT * FROM favorites WHERE class = 'Arts'
-7) SELECT * FROM students WHERE city = 'Paris'
+1) SELECT * FROM students NATURAL JOIN favorites WHERE id = 5
+2) SELECT name,sport FROM students NATURAL JOIN favorites WHERE id = 4
+3) SELECT name,class FROM students NATURAL JOIN favorites WHERE id = 1
+4) SELECT * FROM students NATURAL JOIN favorites  WHERE class = 'Music'
+5) SELECT name FROM students NATURAL JOIN favorites WHERE sport = 'Tennis'
+6) SELECT name FROM students NATURAL JOIN favorites WHERE class = 'Arts'
+7) SELECT COUNT(name) FROM students WHERE city = 'Paris'
 
 
+Rapport lvl3
 
+1) 
+2)
+3)
+4)
 
-
-
-
-
+/*SELECT LOCATE( e, name) FROM * WHERE *; ?? = voir la bonne méthode pour séléctionner tous les "e" ??
